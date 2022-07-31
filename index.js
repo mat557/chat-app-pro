@@ -14,9 +14,6 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 
-app.get('/',(req,res)=>{
-    res.send("Server is running for the chat app");
-});
 
 
 io.on('connection',(socket)=>{
@@ -34,6 +31,12 @@ io.on('connection',(socket)=>{
         io.to(data.to).emit("callaccepted", data.signal)
     });
 });
+
+
+app.get('/',(req,res)=>{
+    res.send("Server is running for the chat app");
+});
+
 
 
 server.listen(PORT,()=>{
